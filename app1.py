@@ -4,6 +4,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 from datetime import datetime
 import yfinance as yf
+import pandas as pd
 
 # USERNAME_PASSWORD_PAIRS = [
 #     ['JamesBond', '007'], ['LouisArmstrong', 'satchmo']
