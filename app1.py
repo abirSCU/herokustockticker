@@ -21,7 +21,7 @@ import dash_auth
 #     VALID_USERNAME_PASSWORD_PAIRS
 # )
 
-# app = dash.Dash()
+app = dash.Dash()
 # auth = da.basic_auth(app,USERNAME_PASSWORD_PAIRS)
 # read a .csv file, make a dataframe, and build a list of Dropdown options
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
@@ -95,5 +95,5 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
     return fig
 
 if __name__ == '__main__':
-    os.environ["IEX_API_KEY"] = 'pk_3b40de02cd9f469dbffc87f8c114e13d'
+    # os.environ["IEX_API_KEY"] = 'pk_3b40de02cd9f469dbffc87f8c114e13d'
     app.run_server()
