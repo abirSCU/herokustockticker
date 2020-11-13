@@ -9,20 +9,14 @@ import pandas as pd
 import yfinance as yf
 import dash_auth
 
-# VALID_USERNAME_PASSWORD_PAIRS = {
-#     'hello': 'world'
-# }
-#
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-#
-# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-# auth = dash_auth.BasicAuth(
-#     app,
-#     VALID_USERNAME_PASSWORD_PAIRS
-# )
+# USERNAME_PASSWORD_PAIRS = [
+#     ['JamesBond', '007'], ['LouisArmstrong', 'satchmo']
+# ]
 
 app = dash.Dash()
-# auth = da.basic_auth(app,USERNAME_PASSWORD_PAIRS)
+# auth = dash_auth.BasicAuth(app, USERNAME_PASSWORD_PAIRS)
+server = app.server
+
 # read a .csv file, make a dataframe, and build a list of Dropdown options
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
 nsdq.set_index('Symbol', inplace=True)
@@ -30,7 +24,6 @@ options = []
 for tic in nsdq.index:
     options.append({'label':'{} {}'.format(tic,nsdq.loc[tic]['Name']), 'value':tic})
 
-server = app:server
 app.layout = html.Div([
     html.H1('Stock Ticker Dashboard'),
     html.Div([
