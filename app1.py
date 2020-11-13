@@ -30,6 +30,8 @@ options = []
 for tic in nsdq.index:
     options.append({'label':'{} {}'.format(tic,nsdq.loc[tic]['Name']), 'value':tic})
 
+server = app:server
+
 app.layout = html.Div([
     html.H1('Stock Ticker Dashboard'),
     html.Div([
@@ -95,4 +97,5 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
 
 if __name__ == '__main__':
     os.environ["IEX_API_KEY"] = 'pk_3b40de02cd9f469dbffc87f8c114e13d'
+    server = app:server
     app.run_server()
