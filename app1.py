@@ -24,7 +24,7 @@ auth = dash_auth.BasicAuth(
 # app = dash.Dash()
 # auth = da.basic_auth(app,USERNAME_PASSWORD_PAIRS)
 # read a .csv file, make a dataframe, and build a list of Dropdown options
-nsdq = pd.read_csv('../data/NASDAQcompanylist.csv')
+nsdq = pd.read_csv('NASDAQcompanylist.csv')
 nsdq.set_index('Symbol', inplace=True)
 options = []
 for tic in nsdq.index:
