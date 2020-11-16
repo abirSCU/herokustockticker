@@ -5,15 +5,12 @@ from dash.dependencies import Input, Output, State
 from datetime import datetime
 import yfinance as yf
 import pandas as pd
-
 # USERNAME_PASSWORD_PAIRS = [
-#     ['JamesBond', '007'], ['LouisArmstrong', 'satchmo']
+#     ['User1', 'Password1'], ['User2', 'Password2']
 # ]
-
 app = dash.Dash()
 # auth = dash_auth.BasicAuth(app, USERNAME_PASSWORD_PAIRS)
 server = app.server
-
 # read a .csv file, make a dataframe, and build a list of Dropdown options
 nsdq = pd.read_csv('NASDAQcompanylist.csv')
 nsdq.set_index('Symbol', inplace=True)
@@ -73,7 +70,6 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
     # since stock_ticker is now a list of symbols, create a list of traces
     traces = []
     for tic in stock_ticker:
-        # df = web.DataReader(tic,'iex',start,end)
         df = yf.download(tic, start=start, end=end)
         traces.append({'x':df.index, 'y': df['Adj Close'], 'name':tic})
     fig = {
@@ -83,7 +79,5 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
         'layout': {'title':', '.join(stock_ticker)+' Closing Prices'}
     }
     return fig
-
 if __name__ == '__main__':
-    # os.environ["IEX_API_KEY"] = 'pk_3b40de02cd9f469dbffc87f8c114e13d'
     app.run_server()
