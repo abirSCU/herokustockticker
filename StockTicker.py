@@ -35,9 +35,9 @@ app.layout = html.Div([
         html.H3('Select start and end dates:'),
         dcc.DatePickerRange(
             id='my_date_picker',
-        #    min_date_allowed=datetime(2015, 1, 1),
+            min_date_allowed=datetime(1980, 1, 1),
             max_date_allowed=datetime.today(),
-            start_date=datetime(2018, 1, 1),
+            start_date=datetime(1980, 1, 1),
             end_date=datetime.today()
         )
     ], style={'display':'inline-block'}),
